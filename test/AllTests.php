@@ -16,7 +16,7 @@ Zend_Loader::registerAutoload();
 
 require_once ROOT_DIR . '/test/application/default/controllers/IndexControllerTest.php';
 require_once ROOT_DIR . '/test/application/admin/controllers/Admin_IndexControllerTest.php';
-require_once ROOT_DIR . '/test/application/models/ArticleTest.php';
+require_once ROOT_DIR . '/test/application/models/ZFB/ArticleTest.php';
 
 
 /**
@@ -32,7 +32,7 @@ class AllTests extends PHPUnit_Framework_TestSuite {
 
 		$this->addTestSuite ( 'IndexControllerTest' );
 		$this->addTestSuite ( 'Admin_IndexControllerTest' );
-		$this->addTestSuite ( 'ArticleTest' );
+		$this->addTestSuite ( 'ZFB_ArticleTest' );
 
 	}
 

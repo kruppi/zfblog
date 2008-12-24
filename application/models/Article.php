@@ -3,7 +3,7 @@
  * Class representing article
  *
  */
-class Article
+class Article implements Zend_Acl_Resource_Interface
 {
     /**
      * Article ID
@@ -42,5 +42,10 @@ class Article
             throw new InvalidArgumentException();
         }
         $this->_id = $id;
+    }
+
+    public function getResourceId()
+    {
+        return get_class($this);
     }
 }
