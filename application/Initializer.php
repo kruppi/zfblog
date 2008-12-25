@@ -178,7 +178,50 @@ class Initializer extends Zend_Controller_Plugin_Abstract
      */
     public function initRoutes()
     {
+        $archiveYearRoute = new Zend_Controller_Router_Route_Regex(
+            'archive/(\d+)',
+            array(
+                'module'     => 'default',
+                'controller' => 'archive',
+                'action'     => 'year',
+            ),
+            array(
+                '1'          => 'year'
+            )
+        );
 
+        $archiveYearMonthRoute = new Zend_Controller_Router_Route_Regex(
+            'archive/(\d+)/(\d{2})',
+            array(
+                'module'     => 'default',
+                'controller' => 'archive',
+                'action'     => 'year-month'
+            ),
+            array(
+                '1'          => 'year',
+                '2'          => 'month'
+            )
+        );
+
+        $articleRoute = new Zend_Controller_Router_Route_Regex(
+            'archive/(\d+)/(\d{2})/(\d{2})/(\d+)-(.+)',
+            array(
+                'module'     => 'default',
+                'controller' => 'article',
+                'action'     => 'index'
+            ),
+            array(
+                '1'          => 'year',
+                '2'          => 'month',
+                '3'          => 'day',
+                '4'          => 'articleId',
+                '5'          => 'articleURLName'
+            )
+        );
+
+        $this->_front->getRouter()->addRoute('article', $articleRoute);
+        $this->_front->getRouter()->addRoute('archiveYear', $archiveYearRoute);
+        $this->_front->getRouter()->addRoute('archiveYearMonth', $archiveYearMonthRoute);
     }
 
     /**

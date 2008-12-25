@@ -1,6 +1,6 @@
 <?php
 require_once ('PHPUnit/Framework/TestCase.php');
-class ZFB_ArticleTest extends PHPUnit_Framework_TestCase
+class ArticleTest extends PHPUnit_Framework_TestCase
 {
     public function setUp ()
     {
@@ -11,12 +11,18 @@ class ZFB_ArticleTest extends PHPUnit_Framework_TestCase
         parent::tearDown();
     }
 
+    /**
+     * when no param is provided to constructor $_id has to be null
+     */
     public function testConstructArticleWithNoId()
     {
         $article = new Article();
         $this->assertAttributeEquals(null,'_id',$article);
     }
 
+    /**
+     * When param to constructor is provided private property $_id has to be set to that value
+     */
     public function testConstructWithIdSetsPrivateIdProperty()
     {
         $article = new Article(1);
@@ -45,6 +51,12 @@ class ZFB_ArticleTest extends PHPUnit_Framework_TestCase
     {
         $article = new Article();
         $article->setId('lala');
+    }
+
+    public function testGetResourceId()
+    {
+        $article = new Article();
+        $this->assertEquals('Article',$article->getResourceId());
     }
 
 

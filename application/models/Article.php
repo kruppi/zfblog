@@ -15,20 +15,66 @@ class Article implements Zend_Acl_Resource_Interface
     /**
      * Author ID
      *
-     * @var unknown_type
+     * @var int
      */
     private $_authorId;
+
+    /**
+     * Date created
+     *
+     * @var Zend_Date
+     */
+    private $_created;
+
+    /**
+     * Heading of article
+     *
+     * @var string
+     */
+    private $_heading = '';
+
+    /**
+     * Perex of article
+     *
+     * @var string
+     */
+    private $_perex = '';
+
+    /**
+     * Body of article
+     *
+     * @var string
+     */
+    private $_text = '';
+
+    /**
+     * Date of last modification
+     *
+     * @var Zend_Date
+     */
+    private $_lastModified;
+
+    /**
+     * Id of last modifier
+     *
+     * @var int
+     */
+    private $_lastMOdifiedBy;
 
     /**
      * constructor
      *
      * @param int $id
      */
-
-
     public function __construct ($id = null)
     {
         $this->_id = $id;
+
+        if (null === $id) {
+
+        } else {
+
+        }
     }
 
     public function getId()
